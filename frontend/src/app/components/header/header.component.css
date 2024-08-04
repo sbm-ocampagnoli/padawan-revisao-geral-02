@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+button {
+  padding: 10px 20px;
+  margin-right: 5vw;
+  font-size: 16px;
+}
+
+input[type="text"] {
+  width: 40vw;
+  padding: 10px 20px;
+}
