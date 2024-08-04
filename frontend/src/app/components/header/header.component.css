@@ -9,12 +9,13 @@ button {
   padding: 10px 20px;
   margin-right: 5vw;
   font-size: 16px;
+  background-color: rgb(146, 208, 228);
   transition: all 1s;
 }
 
 button:hover {
   font-size: 18px;
-  background-color: lightblue;
+  background-color: rgb(102, 201, 234);
 }
 
 input[type="text"] {
