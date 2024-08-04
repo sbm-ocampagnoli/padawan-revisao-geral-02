@@ -9,6 +9,12 @@ button {
   padding: 10px 20px;
   margin-right: 5vw;
   font-size: 16px;
+  transition: all 1s;
+}
+
+button:hover {
+  font-size: 18px;
+  background-color: lightblue;
 }
 
 input[type="text"] {
