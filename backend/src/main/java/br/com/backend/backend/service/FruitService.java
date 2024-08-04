@@ -9,14 +9,17 @@ import org.springframework.stereotype.Service;
 import br.com.backend.backend.model.Fruit;
 import br.com.backend.backend.repository.FruitRepository;
 
-
 @Service
 public class FruitService {
-	
+
 	@Autowired
 	private FruitRepository fruitRepository;
 
-	public List<Fruit> listAll() throws SQLException{
+	public List<Fruit> listAll() throws SQLException {
 		return this.fruitRepository.listAll();
+	}
+
+	public void saveFruit(Fruit fruit) throws SQLException {
+		fruitRepository.save(fruit);
 	}
 }

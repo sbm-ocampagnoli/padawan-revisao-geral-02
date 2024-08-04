@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +19,7 @@ import br.com.backend.backend.model.Fruit;
 public class FruitRepository {
 
 	private Connection connection;
-	
-	
+
 	@Autowired
 	public FruitRepository(DataSource dataSource) throws SQLException {
 		this.connection = dataSource.getConnection();
@@ -46,6 +46,24 @@ public class FruitRepository {
 			}
 		}
 		return fruits;
+	}
+
+	public void save(Fruit fruit) throws SQLException {
+		String sql = "INSERT INTO fruit (name, season, price_per_kg) VALUES (?, ?, ?)";
+
+		try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+			pstm.setString(1, fruit.getName());
+			pstm.setString(2, fruit.getSeason());
+			pstm.setDouble(3, fruit.getPricePerKg());
+
+			pstm.execute();
+
+			try (ResultSet rst = pstm.getGeneratedKeys()) {
+				if (rst.next()) {
+					fruit.setId(rst.getLong(1));
+				}
+			}
+		}
 	}
 
 }
