@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 15px 0;
+  width: 25%;
+  min-width: 100px;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 5vh;
+  flex: wrap;
+  padding: 10px;
+}
+
+ul {
+  margin-bottom: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 5px;
+  display: flex;
+}
+
+li span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+button {
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+  border-radius: 15px;
+}
+
+.editarBtn {
+  background-color: rgb(251, 218, 88);
+  transition: all 1s;
+}
+
+.editarBtn:hover {
+  background-color: rgb(251, 218, 0);
+  color: white;
+}
+
+.excluirBtn {
+  background-color: rgb(252, 121, 121);
+  transition: all 1s;
+}
+
+.excluirBtn:hover {
+  color: white;
+  background-color: red;
+}
