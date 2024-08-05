@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,7 @@ public class FruitController {
 	}
 
 	@PostMapping
+	@Transactional
 	public ResponseEntity<Fruit> createFruit(@RequestBody Fruit fruit) throws SQLException {
 		fruitService.saveFruit(fruit);
 		return new ResponseEntity<>(fruit, HttpStatus.CREATED);
@@ -41,5 +43,11 @@ public class FruitController {
 	@Transactional
 	public void updateFruit(@PathVariable Long id, @RequestBody FruitForm form) throws SQLException {
 		this.fruitService.updateFruit(id, form);
+	}
+	
+	@DeleteMapping("/{id}")
+	@Transactional
+	public void deleteFruit(@PathVariable Long id) throws SQLException {
+		this.fruitService.deleteById(id);
 	}
 }

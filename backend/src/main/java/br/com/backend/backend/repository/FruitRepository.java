@@ -11,7 +11,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import br.com.backend.backend.controller.form.FruitForm;
@@ -68,7 +67,6 @@ public class FruitRepository {
 		}
 	}
 
-
 	public void update(Long id, FruitForm form) throws SQLException {
 		String sql = "UPDATE fruit SET name = ?, season = ?, price_per_kg = ? WHERE id = ?";
 
@@ -81,7 +79,16 @@ public class FruitRepository {
 			pstm.execute();
 
 		} catch (SQLException e) {
-			
+
+		}
+	}
+
+	public void deleteById(Long id) throws SQLException {
+		try (PreparedStatement stm = connection.prepareStatement("DELETE FROM fruit WHERE id = ?")) {
+			stm.setLong(1, id);
+			stm.execute();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
 	}
 

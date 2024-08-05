@@ -28,4 +28,8 @@ public class FruitService {
 	public void updateFruit(Long id, FruitForm form) throws SQLException {
 		this.fruitRepository.update(id, form);
 	}
+
+	public void deleteById(Long id) throws SQLException {
+		this.fruitRepository.deleteById(id);
+	}
 }
