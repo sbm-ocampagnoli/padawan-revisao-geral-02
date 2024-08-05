@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Fruit } from '../components/fruit';
@@ -15,5 +15,12 @@ export class FruitService {
 
   getAll(): Observable<Fruit[]> {
     return this.http.get<Fruit[]>(this.apiUrl);
+  }
+
+  deleteFruit(id: number): Observable<void> {
+    // debugger
+    // let params = new HttpParams();
+    // params = params.set('id', id);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

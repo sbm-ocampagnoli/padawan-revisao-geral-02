@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class FruitComponent implements OnInit {
 
   fruits: Fruit[] = [];
+
   constructor(private service: FruitService) { }
 
   ngOnInit(): void {
@@ -23,5 +24,9 @@ export class FruitComponent implements OnInit {
         console.log(fruits);
         this.fruits = fruits;
       });
+  }
+
+  deleteFruit(id: number) : void {
+    this.service.deleteFruit(id).subscribe();
   }
 }

@@ -1,5 +1,5 @@
 export interface Fruit {
-  id?: number,
+  id: number,
   name: string,
   sesson: string,
   pricePerKg: number
