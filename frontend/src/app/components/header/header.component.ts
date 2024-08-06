@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   addFruit(fruit: Fruit) {
     this.fruitService.addFruit(fruit).subscribe();
     this.addMode = false;
+    window.location.reload();
   }
 
   openAddMode() {

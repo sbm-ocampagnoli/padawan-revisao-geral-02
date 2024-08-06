@@ -28,6 +28,7 @@ export class FruitComponent implements OnInit {
 
   deleteFruit(fruit: Fruit) : void {
     this.service.deleteFruit(fruit).subscribe();
+    window.location.reload();
   }
 
   openEditMode(){
@@ -35,8 +36,8 @@ export class FruitComponent implements OnInit {
   }
 
   updateFruit(fruit: Fruit) {
-    debugger
     this.service.updateFruit(fruit).subscribe();
     this.editMode = false;
+    window.location.reload();
   }
 }
