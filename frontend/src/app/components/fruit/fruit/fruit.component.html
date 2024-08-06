@@ -3,7 +3,7 @@
     <ul>
       <li><span>Nome:</span> {{ fruit.name }}</li>
       <li><span>Época:</span> {{ fruit.season }}</li>
-      <li><span>Preço(Kg):</span> R$ {{ fruit.pricePerKg }}</li>
+      <li><span>Preço(Kg):</span> R$ {{ fruit.pricePerKg.toFixed(2) }}</li>
     </ul>
     <div class="actions-container">
       <button class="editarBtn">Editar</button>
