@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class FruitComponent implements OnInit {
 
   fruits: Fruit[] = [];
+  editMode: boolean = false;
 
   constructor(private service: FruitService) { }
 
@@ -28,5 +29,15 @@ export class FruitComponent implements OnInit {
 
   deleteFruit(id: number) : void {
     this.service.deleteFruit(id).subscribe();
+  }
+
+  openEditMode(){
+    this.editMode = true;
+  }
+
+  updateFruit(fruit: Fruit) {
+    debugger
+    this.service.updateFruit(fruit.id, fruit).subscribe();
+    this.editMode = false;
   }
 }

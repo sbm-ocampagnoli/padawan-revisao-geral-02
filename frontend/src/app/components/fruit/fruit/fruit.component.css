@@ -26,6 +26,7 @@ ul {
 li {
   margin-bottom: 5px;
   display: flex;
+  align-items: center;
 }
 
 li span {
@@ -58,4 +59,17 @@ button {
 .excluirBtn:hover {
   color: white;
   background-color: red;
+}
+
+input,
+textarea {
+  display: flex;
+  border: 0;
+  border-radius: 6px;
+  padding: 2%;
+  background-color: darkgray;
+  margin: 10px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  max-width: 100px;
 }

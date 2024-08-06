@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class FruitService {
 
+
   private apiUrl = environment.apiURL + '/fruits';
 
   constructor(private http: HttpClient) { }
@@ -22,5 +23,9 @@ export class FruitService {
     // let params = new HttpParams();
     // params = params.set('id', id);
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  updateFruit(id: number, fruit: Fruit) : Observable<void> {
+   return this.http.put<void>(`${this.apiUrl}/${id}`, fruit);
   }
 }
