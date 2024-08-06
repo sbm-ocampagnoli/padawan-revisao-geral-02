@@ -1,5 +1,6 @@
+import { FruitComponent } from './../fruit/fruit/fruit.component';
+import { Fruit } from './../fruit';
 import { Component, OnInit } from '@angular/core';
-import { Fruit } from '../fruit';
 import { FruitService } from 'src/app/service/fruit.service';
 
 @Component({
@@ -11,6 +12,13 @@ export class HeaderComponent implements OnInit {
 
   addMode: boolean = false;
   newFruit: Fruit = { name: "", season: "", pricePerKg: 0.0};
+  fruitFilter: {name: string, season: string, pricePerKg: number} = {
+    name: "",
+    season: "",
+    pricePerKg: 0.00
+  };
+
+  fruits: Fruit [] = [];
 
   constructor(private fruitService: FruitService) {
 
@@ -22,11 +30,18 @@ export class HeaderComponent implements OnInit {
   addFruit(fruit: Fruit) {
     this.fruitService.addFruit(fruit).subscribe();
     this.addMode = false;
-    window.location.reload();
-  }
+    this.fruits = [];
+    }
 
   openAddMode() {
     this.addMode = true;
+    this.fruits = [];
   }
 
+  search(fruitFilter: any) {
+    console.log(fruitFilter)
+    this.fruitService.filter(fruitFilter).subscribe((fruits: Fruit[]) => {
+      this.fruits = fruits;
+    });
+  }
 }

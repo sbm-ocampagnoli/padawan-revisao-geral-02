@@ -1,12 +1,32 @@
 <div class="container">
   <button (click)="openAddMode()">Adicionar</button>
-  <button onclick="">Pesquisar</button>
-  <input type="text" placeholder="pesquise sua fruta..." />
+  <button (click)="search(this.fruitFilter)">Pesquisar</button>
+  <input
+    type="text"
+    placeholder="Nome da fruta..."
+    [(ngModel)]="fruitFilter.name"
+  />
+  <input
+    type="text"
+    placeholder="Época da fruta..."
+    [(ngModel)]="fruitFilter.season"
+  />
+  <input type="number" [(ngModel)]="fruitFilter.pricePerKg" />
 </div>
 
 <div class="container-add" *ngIf="this.addMode">
-  <input type="text" [placeholder]="" [(ngModel)]="newFruit.name" />
-  <input type="text" [placeholder]="" [(ngModel)]="newFruit.season" />
-  <input type="number" [placeholder]="" [(ngModel)]="newFruit.pricePerKg" />
+  <input
+    type="text"
+    placeholder="Nome da fruta..."
+    [(ngModel)]="newFruit.name"
+  />
+  <input
+    type="text"
+    placeholder="Época da fruta..."
+    [(ngModel)]="newFruit.season"
+  />
+  <input type="number" [(ngModel)]="newFruit.pricePerKg" />
   <button (click)="addFruit(this.newFruit)">Salvar</button>
 </div>
+
+<app-fruit [fruits]="fruits"></app-fruit>

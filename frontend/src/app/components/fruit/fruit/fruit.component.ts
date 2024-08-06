@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Fruit } from '../../fruit';
 import { FruitService } from 'src/app/service/fruit.service';
 
@@ -9,13 +9,13 @@ import { FruitService } from 'src/app/service/fruit.service';
 })
 export class FruitComponent implements OnInit {
 
-  fruits: Fruit[] = [];
+ @Input() fruits: Fruit[] = [];
   editMode: boolean = false;
 
   constructor(private service: FruitService) { }
 
   ngOnInit(): void {
-    this.getAll();
+
   }
 
   getAll(): void {

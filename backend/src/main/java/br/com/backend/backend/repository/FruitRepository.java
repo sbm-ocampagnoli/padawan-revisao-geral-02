@@ -105,15 +105,25 @@ public class FruitRepository {
 			sql += " AND season LIKE ?";
 		}
 
-		if (pricePerKg > 0.00) {
+		if (pricePerKg != 0) {
 			sql += " AND price_per_kg = ?";
 		}
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql.toString())) {
+			
+		      int paramIndex = 1;
+			
+			if (!name.isEmpty() && name != null) {
+				pstm.setString(paramIndex++, "%" + name + "%");
+			}
 
-			pstm.setString(1, "%" + name + "%");
-			pstm.setString(2, "%" + season + "%");
-			pstm.setDouble(3, pricePerKg);
+			if (!season.isEmpty() && season != null) {
+				pstm.setString(paramIndex++, "%" + season + "%");
+			}
+
+			if (pricePerKg != 0) {
+				pstm.setDouble(paramIndex++, pricePerKg);
+			}
 
 			pstm.execute();
 
@@ -121,7 +131,7 @@ public class FruitRepository {
 				while (rst.next()) {
 					Fruit fruit = new Fruit();
 					fruit.setId(rst.getLong("id"));
-					fruit.setName(rst.getString("name")	);
+					fruit.setName(rst.getString("name"));
 					fruit.setSeason(rst.getString("season"));
 					fruit.setPricePerKg(rst.getDouble("price_per_kg"));
 
