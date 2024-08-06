@@ -30,7 +30,6 @@ export class FruitService {
   }
 
   filter(fruitFilter: any): Observable<Fruit[]> {
-    debugger
     let params = new HttpParams();
     params = params.set('name', fruitFilter.name);
     params = params.set('season', fruitFilter.season);

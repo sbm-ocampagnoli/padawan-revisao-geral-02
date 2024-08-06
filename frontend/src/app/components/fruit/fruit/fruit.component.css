@@ -8,13 +8,11 @@
   display: flex;
   border: 2px solid black;
   border-radius: 15px 0;
-  width: 145px;
   min-width: 145px;
   flex-direction: column;
-  align-items: flex-end;
-  margin: 5vh;
-  flex: wrap;
-  padding: 10px;
+  align-items: center;
+  margin: 2vh;
+  padding: 2vh;
 }
 
 ul {
@@ -25,8 +23,7 @@ ul {
 
 li {
   margin-bottom: 5px;
-  display: flex;
-  align-items: center;
+  align-items:  start;
 }
 
 li span {
@@ -39,6 +36,12 @@ button {
   margin: 5px;
   font-size: 14px;
   border-radius: 15px;
+}
+
+.actions-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .editarBtn {
@@ -61,15 +64,14 @@ button {
   background-color: red;
 }
 
-input,
+.container input,
 textarea {
   display: flex;
-  border: 0;
+  border: 2px groove;
   border-radius: 6px;
   padding: 2%;
   background-color: darkgray;
   margin: 10px;
-  box-sizing: border-box;
-  flex-grow: 1;
+  flex-wrap: wrap;
   max-width: 100px;
 }
