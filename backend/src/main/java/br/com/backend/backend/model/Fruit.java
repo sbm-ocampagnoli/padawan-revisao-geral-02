@@ -1,5 +1,6 @@
 package br.com.backend.backend.model;
 
+
 public class Fruit {
 	private Long id;
 	private String name;
@@ -40,5 +41,4 @@ public class Fruit {
 	public void setPricePerKg(double pricePerKg) {
 		this.pricePerKg = pricePerKg;
 	}
-
 }

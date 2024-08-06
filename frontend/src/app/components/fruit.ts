@@ -1,6 +1,6 @@
 export interface Fruit {
-  id: number,
+  id?: number,
   name: string,
   season: string,
-  pricePerKg: number
+  pricePerKg: number,
 }

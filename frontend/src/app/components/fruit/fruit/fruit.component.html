@@ -13,7 +13,7 @@
     <div class="actions-container">
       <button *ngIf="!editMode" class="editarBtn" (click)="openEditMode()">Editar</button>
       <button *ngIf="editMode" class="editarBtn" (click)="updateFruit(this.fruit)">Salvar</button>
-      <button class="excluirBtn" (click)="deleteFruit(this.fruit.id)">Excluir</button>
+      <button class="excluirBtn" (click)="deleteFruit(this.fruit)">Excluir</button>
     </div>
   </div>
 </div>

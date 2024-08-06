@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class FruitService {
 
 
+
   private apiUrl = environment.apiURL + '/fruits';
 
   constructor(private http: HttpClient) { }
@@ -18,14 +19,18 @@ export class FruitService {
     return this.http.get<Fruit[]>(this.apiUrl);
   }
 
-  deleteFruit(id: number): Observable<void> {
+  deleteFruit(fruit: Fruit): Observable<void> {
     // debugger
     // let params = new HttpParams();
     // params = params.set('id', id);
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${fruit.id}`);
   }
 
-  updateFruit(id: number, fruit: Fruit) : Observable<void> {
-   return this.http.put<void>(`${this.apiUrl}/${id}`, fruit);
+  updateFruit(fruit: Fruit): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${fruit.id}`, fruit);
+  }
+
+  addFruit(fruit: Fruit): Observable<Fruit> {
+    return this.http.post<Fruit>(this.apiUrl, fruit);
   }
 }

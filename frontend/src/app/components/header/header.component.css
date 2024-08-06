@@ -24,3 +24,11 @@ input[type="text"] {
   width: 40vw;
   padding: 10px 20px;
 }
+
+.container-add {
+  display: flex;
+  align-items: end;
+  margin-bottom: 10vw;
+  margin-top: 10vw;
+  flex-direction: column;
+}

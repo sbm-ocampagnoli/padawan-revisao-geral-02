@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Fruit } from '../../fruit';
 import { FruitService } from 'src/app/service/fruit.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-fruit',
@@ -27,8 +26,8 @@ export class FruitComponent implements OnInit {
       });
   }
 
-  deleteFruit(id: number) : void {
-    this.service.deleteFruit(id).subscribe();
+  deleteFruit(fruit: Fruit) : void {
+    this.service.deleteFruit(fruit).subscribe();
   }
 
   openEditMode(){
@@ -37,7 +36,7 @@ export class FruitComponent implements OnInit {
 
   updateFruit(fruit: Fruit) {
     debugger
-    this.service.updateFruit(fruit.id, fruit).subscribe();
+    this.service.updateFruit(fruit).subscribe();
     this.editMode = false;
   }
 }

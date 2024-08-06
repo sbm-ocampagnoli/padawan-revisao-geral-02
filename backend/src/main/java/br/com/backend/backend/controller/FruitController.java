@@ -36,7 +36,7 @@ public class FruitController {
 	@Transactional
 	public ResponseEntity<Fruit> createFruit(@RequestBody Fruit fruit) throws SQLException {
 		fruitService.saveFruit(fruit);
-		return new ResponseEntity<>(fruit, HttpStatus.CREATED);
+		return new ResponseEntity<Fruit>(fruit, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{id}")
