@@ -32,4 +32,8 @@ public class FruitService {
 	public void deleteById(Long id) throws SQLException {
 		this.fruitRepository.deleteById(id);
 	}
+
+	public List<Fruit> filterComposed(String name, String season, double pricePerKg) throws SQLException {
+		return this.fruitRepository.filterComposed(name, season, pricePerKg);
+	}
 }

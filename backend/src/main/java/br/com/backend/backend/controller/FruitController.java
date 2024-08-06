@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.backend.backend.controller.form.FruitForm;
@@ -28,8 +29,17 @@ public class FruitController {
 	private FruitService fruitService;
 
 	@GetMapping
-	public List<Fruit> listAll() throws SQLException {
+	public List<Fruit> listAll(
+
+	) throws SQLException {
 		return this.fruitService.listAll();
+	}
+
+	@GetMapping("/filter")
+	public List<Fruit> listAll(@RequestParam(required = false, defaultValue = "") String name,
+			@RequestParam(required = false, defaultValue = "") String season,
+			@RequestParam(required = false, defaultValue = "") double pricePerKg) throws SQLException {
+		return this.fruitService.filterComposed(name, season, pricePerKg);
 	}
 
 	@PostMapping
@@ -44,7 +54,7 @@ public class FruitController {
 	public void updateFruit(@PathVariable Long id, @RequestBody FruitForm form) throws SQLException {
 		this.fruitService.updateFruit(id, form);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@Transactional
 	public void deleteFruit(@PathVariable Long id) throws SQLException {

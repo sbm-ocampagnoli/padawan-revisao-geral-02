@@ -92,4 +92,44 @@ public class FruitRepository {
 		}
 	}
 
+	public List<Fruit> filterComposed(String name, String season, double pricePerKg) throws SQLException {
+		List<Fruit> fruits = new ArrayList<>();
+
+		String sql = "SELECT id, name, season, price_per_kg FROM fruit WHERE 1=1";
+
+		if (!name.isEmpty() && name != null) {
+			sql += " AND name LIKE ?";
+		}
+
+		if (!season.isEmpty() && season != null) {
+			sql += " AND season LIKE ?";
+		}
+
+		if (pricePerKg > 0.00) {
+			sql += " AND price_per_kg = ?";
+		}
+
+		try (PreparedStatement pstm = connection.prepareStatement(sql.toString())) {
+
+			pstm.setString(1, "%" + name + "%");
+			pstm.setString(2, "%" + season + "%");
+			pstm.setDouble(3, pricePerKg);
+
+			pstm.execute();
+
+			try (ResultSet rst = pstm.getResultSet()) {
+				while (rst.next()) {
+					Fruit fruit = new Fruit();
+					fruit.setId(rst.getLong("id"));
+					fruit.setName(rst.getString("name")	);
+					fruit.setSeason(rst.getString("season"));
+					fruit.setPricePerKg(rst.getDouble("price_per_kg"));
+
+					fruits.add(fruit);
+				}
+			}
+		}
+		return fruits;
+	}
+
 }
