@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 10vh;
+  flex-wrap: wrap;
+}
+
+.container-search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.actions-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+button {
+  padding: 10px 20px;
+  margin-right: 1vw;
+  font-size: 16px;
+  background-color: rgb(146, 208, 228);
+  transition: all 1s;
+  border-radius: 15px;
+}
+
+button:hover {
+  font-size: 18px;
+  background-color: rgb(102, 201, 234);
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 15vw;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+.container-add {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10vw;
+  margin-top: 10vw;
+  flex-direction: column;
+}
