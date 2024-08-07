@@ -1,0 +1,19 @@
+<div class="grid-container">
+  <div *ngFor="let fruit of fruits" class="container">
+    <ul *ngIf="!this.editMode">
+      <li><span>Nome:</span> {{ fruit.name }}</li>
+      <li><span>Época:</span> {{ fruit.season }}</li>
+      <li><span>Preço(Kg):</span> R$ {{ fruit.pricePerKg.toFixed(2) }}</li>
+    </ul>
+    <ul *ngIf="this.editMode">
+      <li><span>Nome:</span> <input type="text" [(ngModel)]="this.fruit.name"> </li>
+      <li><span>Época:</span> <input type="text" [(ngModel)]="this.fruit.season"></li>
+      <li><span>Preço(Kg):</span><input type="number" [(ngModel)]="this.fruit.pricePerKg"></li>
+    </ul>
+    <div class="actions-container">
+      <button *ngIf="!editMode" class="editarBtn" (click)="openEditMode()">Editar</button>
+      <button *ngIf="editMode" class="editarBtn" (click)="updateFruit(this.fruit)">Salvar</button>
+      <button class="excluirBtn" (click)="deleteFruit(this.fruit)">Excluir</button>
+    </div>
+  </div>
+</div>

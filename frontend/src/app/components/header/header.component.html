@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="container-search">
+    <div class="actions-buttons">
+      <button (click)="openAddMode()">Adicionar</button>
+      <button (click)="search(this.fruitFilter)">Pesquisar</button>
+    </div>
+    <div class="container-search-inputs">
+      <label>Nome:</label>
+      <input
+        type="text"
+        placeholder="Nome da fruta..."
+        [(ngModel)]="fruitFilter.name"
+      />
+      <label for="">Época: </label>
+      <input
+        type="text"
+        placeholder="Época da fruta..."
+        [(ngModel)]="fruitFilter.season"
+      />
+      <label for="">Preço: </label>
+      <input type="number" [(ngModel)]="fruitFilter.pricePerKg" />
+    </div>
+  </div>
+</div>
+
+<div class="container-add" *ngIf="this.addMode">
+  <input
+    type="text"
+    placeholder="Nome da fruta..."
+    [(ngModel)]="newFruit.name"
+  />
+  <input
+    type="text"
+    placeholder="Época da fruta..."
+    [(ngModel)]="newFruit.season"
+  />
+  <input type="number" [(ngModel)]="newFruit.pricePerKg" />
+  <button (click)="addFruit(this.newFruit)">Salvar</button>
+</div>
+
+<app-fruit [fruits]="fruits"></app-fruit>
